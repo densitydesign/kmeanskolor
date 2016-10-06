@@ -24,17 +24,17 @@ var maxSize=250;
 // function for downloading an image from url
 //*******************************************
 var download = function(uri, filename, callback){
-    request.head(uri, function(err, res, body){
-    if (err){
-		callback(err);
-	}
-	else {
-        if (!fs.existsSync(pathImages)){
-            fs.mkdirSync(pathImages);
-        }
-        request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-	}    
-});
+        request.head(uri, function(err, res, body){
+        if (err){
+    		callback(err);
+    	}
+    	else {
+            if (!fs.existsSync(pathImages)){
+                fs.mkdirSync(pathImages);
+            }
+            request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+    	}    
+    });
 };
 
 
@@ -58,6 +58,8 @@ function average(x) {
 //*************************************************
 
 var processImg = function (imgurl, nclust, orig, callback) {
+
+    console.log('starting with', imgurl)
 
     var totres = [];
     var fname = imgurl.split("/").pop();
