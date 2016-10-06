@@ -77,6 +77,7 @@ var processImg = function (imgurl, nclust, orig, callback) {
         lwip.open(fname, function (err, image) {
 
         	if(err || !image) {
+                console.log('error for: ', fname)
                 callback(null);
                 return null;
         	}
@@ -97,7 +98,9 @@ var processImg = function (imgurl, nclust, orig, callback) {
 
             batch.exec(function(err, image){
 
-                console.log(orig,image.width(), image.height());
+                // console.log(orig,image.width(), image.height());
+
+                console.log(fname)
 
                 if (err) {
                     console.log(err);
